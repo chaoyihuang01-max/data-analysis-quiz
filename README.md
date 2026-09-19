@@ -5,3 +5,7 @@
 ## 部署
 
 仓库已配置 GitHub Pages Actions 工作流。将刷题系统文件上传到仓库根目录并命名为 `index.html`，提交到 `main` 分支后即可自动部署。
+
+## 发布状态
+
+已授权由 ChatGPT 直接推送并触发 GitHub Pages 部署。

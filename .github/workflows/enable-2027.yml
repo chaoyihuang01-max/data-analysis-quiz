@@ -1,0 +1,31 @@
+name: Enable 2027 question bank
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data2027/**'
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Patch quiz application
+        run: python scripts/enable_2027.py
+      - name: Commit upgraded quiz
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "No index changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Enable 2027 question bank"
+          git push

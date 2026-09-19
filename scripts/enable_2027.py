@@ -57,7 +57,7 @@ QUESTIONS.forEach(q=>{if(!q.bank)q.bank="2026";if(!q.label)q.label=`例${q.examp
 QUESTIONS.push(...(window.NEW_2027||[]));'''
 s = s[:end+1] + insert + s[end+1:]
 
-m = re.search(r"const CHAPTER_TITLES = (\\{.*?\\});", s, re.S)
+m = re.search(r"const CHAPTER_TITLES = (\{.*?\});", s, re.S)
 if not m:
     raise RuntimeError("CHAPTER_TITLES not found")
 titles = json.loads(m.group(1))
